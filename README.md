@@ -3,7 +3,8 @@ Create AWS VPC Using Terraform
 First of all, we need to create VPC using terraform.
 
 *provider.tf
-  ```variable "cluster_name" {
+  ```
+  variable "cluster_name" {
   default = "demo"
 }
 
