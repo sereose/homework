@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inflate-efficient
+spec:
+  selector:
+    matchLabels:
+      app: inflate-efficient
+  replicas: 0
+  template:
+    metadata:
+      labels:
+        app: inflate-efficient
+    spec:
+      nodeSelector:
+        intent: apps
+        kubernetes.io/arch: amd64
+        karpenter.sh/capacity-type: spot
+      containers:
+      - image: public.ecr.aws/eks-distro/kubernetes/pause:3.7
+        name: inflate-efficient
+        resources:
+          requests:
+            cpu: "1"
+            memory: 515Mi
